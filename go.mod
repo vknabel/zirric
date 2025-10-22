@@ -1,4 +1,4 @@
-module github.com/vknabel/blush
+module github.com/vknabel/zirric
 
 go 1.24.0
 

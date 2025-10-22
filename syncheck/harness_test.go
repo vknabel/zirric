@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/vknabel/blush/syncheck"
+	"github.com/vknabel/zirric/syncheck"
 )
 
 func TestHarness(t *testing.T) {

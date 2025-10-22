@@ -4,7 +4,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/vknabel/blush/version"
+	"github.com/vknabel/zirric/version"
 )
 
 func TestConditionParsing(t *testing.T) {

@@ -2,9 +2,9 @@ package pkgmanager
 
 import (
 	"github.com/go-git/go-billy/v5"
-	"github.com/vknabel/blush/cavefile"
-	"github.com/vknabel/blush/registry"
-	"github.com/vknabel/blush/registry/gitreg"
+	"github.com/vknabel/zirric/cavefile"
+	"github.com/vknabel/zirric/registry"
+	"github.com/vknabel/zirric/registry/gitreg"
 )
 
 type PackageManager struct {

@@ -6,15 +6,15 @@
 
 ## Introduction
 
-Blush is an experimental programming language designed to bridge the gap between scripting languages and full-fledged programming languages while keeping its own identity.
-Blush is dynamically, but strongly typed. It aims to be simple yet have batteries included.
+Zirric is an experimental programming language designed to bridge the gap between scripting languages and full-fledged programming languages while keeping its own identity.
+Zirric is dynamically, but strongly typed. It aims to be simple yet have batteries included.
 Possible long term use cases are all terminal related stuff and text UI applications that might spread to other domains.
 
 In this proposal we define the base language features in detail. All other proposals will build on top of this one.
 
 ## Motivation
 
-Blush is created to address the flaws identified by the [Lithia programming language](https://github.com/vknabel/lithia). In short these were:
+Zirric is created to address the flaws identified by the [Lithia programming language](https://github.com/vknabel/lithia). In short these were:
 
 - the hardly readable function call syntax
 - the bad combination of dynamically, strong typed languages especially with lazy evaluation
@@ -23,7 +23,7 @@ Blush is created to address the flaws identified by the [Lithia programming lang
 - performance issues due to the interpreter design, lazy evaluation and the lack of control flow structures
 - the `type` expression being limited to types only
 
-Things that proved to be good in Lithia and are kept in Blush:
+Things that proved to be good in Lithia and are kept in Zirric:
 
 - the combination of `enum` and `data` types work great together
 - the concept of `extern` types
@@ -36,21 +36,21 @@ Things that proved to be good in Lithia and are kept in Blush:
 - a single binary that includes all tooling including the lsp
 - the tooling experience in regards to the maturity
 
-Additionally there will be a few ideas that worked great in Lithia, but won't in Blush:
+Additionally there will be a few ideas that worked great in Lithia, but won't in Zirric:
 
 - witnesses had their place, but are now far easier to implement with annotations
-- currying is nice and might have its revival in Blush, but not from the beginning
-- immutability conflicts with potential use cases of Blush
+- currying is nice and might have its revival in Zirric, but not from the beginning
+- immutability conflicts with potential use cases of Zirric
 
 ## Non-Goals
 
-Blush explicitly does not implement generics, interfaces or inheritance.
-Blush does not try to be an embedded or systems language. Competing with other scripting languages in terms of performance is not a goal.
+Zirric explicitly does not implement generics, interfaces or inheritance.
+Zirric does not try to be an embedded or systems language. Competing with other scripting languages in terms of performance is not a goal.
 It is not built to mirror existing languages, but tries to find its own way by combining a few concepts to form something larger.
 
 ## Proposed Solution
 
-Blush is an imperative and functional programming language.
+Zirric is an imperative and functional programming language.
 
 Different kinds of declarations are supported:
 
@@ -74,10 +74,10 @@ Besides that there are a few control flow structures:
 
 ## Detailed Design
 
-Blush is a dynamically typed language, but strict when it comes to conversions.
+Zirric is a dynamically typed language, but strict when it comes to conversions.
 The following sections will all include requirements, examples and EBNF snippets to describe the syntax. The EBNF snippets are not complete and only show the relevant parts.
 
-In general Blush might introduce type checks at run- or compile time. In these cases these are not considered a breaking change as they replace undefined behavior.
+In general Zirric might introduce type checks at run- or compile time. In these cases these are not considered a breaking change as they replace undefined behavior.
 
 ### Expressions
 
@@ -98,8 +98,8 @@ The following precedence groups and operators are supported:
 | `CALL`       | `fun(x)`                         | Left          |
 | `MEMBER`     | `.`, `?.` (reserved)             | Left          |
 
-> **Note:** Operators marked as "(reserved)" are not currently implemented in Blush. They are reserved for possible future use and may be subject to change or removal in later versions. Their presence in this table does not guarantee future support, but indicates that their syntax is being considered for potential language features.
-```blush
+> **Note:** Operators marked as "(reserved)" are not currently implemented in Zirric. They are reserved for possible future use and may be subject to change or removal in later versions. Their presence in this table does not guarantee future support, but indicates that their syntax is being considered for potential language features.
+```zirric
 let value = object.field + 2 // member access
 fun(x + 1, y * 2) // function call
 ```
@@ -108,7 +108,7 @@ fun(x + 1, y * 2) // function call
 
 The following literals are supported:
 
-```blush
+```zirric
 42                 // Int
 3.14               // Float
 0x8899aa           // Hex Int
@@ -131,7 +131,7 @@ Variables don't have types.
 Variables can be annotated.
 At runtime the values of a variable may be changed.
 
-```blush
+```zirric
 let x = 42
 x = 2
 
@@ -148,9 +148,9 @@ decl_let = [annotation_chain],  "let", identifier, "=", expression ;
 
 ### Data types
 
-Data types are the most common types in Blush and store data. In most other languages they are called classes or structs. They are defined by the `data` keyword followed by the type name and a list of fields.
+Data types are the most common types in Zirric and store data. In most other languages they are called classes or structs. They are defined by the `data` keyword followed by the type name and a list of fields.
 
-```blush
+```zirric
 data Person {
     name
     age
@@ -159,7 +159,7 @@ data Person {
 
 To create a new instance of a data type, simply call the type name as a function with the field values as arguments. The order must match the declaration order.
 
-```blush
+```zirric
 let person = Person("John", 42)
 _ = person.name // "John"
 ```
@@ -175,7 +175,7 @@ To increase the expressiveness, function fields can be defined by adding a funct
 
 In practice this serves just as documentation, as fields can store any value.
 
-```blush
+```zirric
 data Example {
   field1
   @SomeAnnotation()
@@ -194,7 +194,7 @@ Enum types are used to express that their values can be one of a group of types.
 
 As convenience, you can even declare types within the enum declaration. These will still be available outside of the enum.
 
-```blush
+```zirric
 enum JuristicPerson {
     Person
     data Company { // this data will be globally available
@@ -217,7 +217,7 @@ Annotations are metadata that can be attached to declarations like `let`, `func`
 Instantiations of annotation types can only be created at compile time.
 As syntactic sugar non-annotation types can be used as annotations. In this case an annotation of type `Type` will be created with the type as argument. Annotations that are actual annotation types, parenthesis are required.
 
-```blush
+```zirric
 @OtherAnnotation()
 annotation SomeAnnotation {
   field1
@@ -237,7 +237,7 @@ decl_annotation = "annotation", type_identifier, [ "{", { decl_field }, "}" ] ;
 
 Fields of `data` and `annotation` types can be annotated with metadata. These annotations will be processed at compile time and can be accessed at runtime.
 
-```blush
+```zirric
 data Person {
     @String // shorthand for @Type(String)
     @json.HasKey("name")
@@ -253,7 +253,7 @@ data Person {
 
 Parameters of functions can be annotated with metadata. These annotations will be processed at compile time and can be accessed at runtime.
 
-```blush
+```zirric
 @Returns(Int)
 func add(@Int a, @Int b) {
     return a + b
@@ -264,7 +264,7 @@ func add(@Int a, @Int b) {
 
 Annotations can be accessed at runtime by using the `reflect` module.
 
-```blush
+```zirric
 import json
 
 let person = Person("John", 42)
@@ -284,7 +284,7 @@ Extern types are built-in types that are implemented in the runtime like `Func`,
 
 Extern declarations must always be global and cannot be nested.
 
-```blush
+```zirric
 extern type Int
 extern type String {
     length
@@ -304,7 +304,7 @@ Extern values are values that are implemented in the runtime like `null`. They a
 
 Extern declarations must always be global and cannot be nested.
 
-```blush
+```zirric
 extern let null
 ```
 
@@ -314,7 +314,7 @@ Extern functions are functions that are implemented in the runtime like `print`.
 
 Extern declarations must always be global and cannot be nested.
 
-```blush
+```zirric
 extern func print(@Has(StringLike) str)
 ```
 
@@ -328,7 +328,7 @@ decl_extern_func = "extern", "func", identifier, "(", [ parameter_list ], ")" ;
 
 Functions are defined by the `func` keyword followed by the function name, a list of parameters and a body.
 
-```blush
+```zirric
 func add(a, b) {
     return a + b
 }
@@ -363,7 +363,7 @@ stmt_return = "return", [ expression ] ;
 
 If expressions and statements are used to conditionally execute code. They are defined by the `if` keyword followed by a condition and a body. Optionally you can add `else if` and `else` clauses. Expressions always require an `else` clause.
 
-```blush
+```zirric
 if condition {
     // multiple statements and local declarations are allowed
 } else if otherCondition {
@@ -391,7 +391,7 @@ expr_if = "if", expression, expr_block, { "else", ( expr_if | expr_block ) } ;
 
 Switch expressions and statements are used to conditionally execute code based on the value of an expression. They are defined by the `switch` keyword followed by an expression and a list of cases. Each case is defined by the `case` keyword followed by a value and a body. Optionally you can add a `_` case. Expressions always require a `_` case.
 
-```blush
+```zirric
 switch value {
 case @String: // if value has type String
   //multiple statements and local declarations are allowed
@@ -427,7 +427,7 @@ switch_case = "case", ( expression | annotation | "_" ), ":", block ;
 
 For expressions and statements are used to iterate over collections, until a condition invalidates or infinitely. They are defined by the `for` keyword followed by a loop definition and a body. The loop definition can be one of the following:
 
-```blush
+```zirric
 for { // infinite loop
     // multiple statements and local declarations are allowed
     if condition {
@@ -483,7 +483,7 @@ Each module has a corresponding value of type `Module` that can be accessed by t
 
 Declarations that precede with `_` are treated as private and cannot be accessed from other modules. The same applies to nested declarations, imports and module-self references.
 
-```blush
+```zirric
 @Deprecated("Use other module instead")
 module examples
 
@@ -500,7 +500,7 @@ decl_module = "module", identifier ;
 
 Imports are used to access other modules. They are defined by the `import` keyword followed by the module path separated by dots. Optionally a list of names to import can be specified.
 
-```blush
+```zirric
 import maths
 import some.examples {
   func1

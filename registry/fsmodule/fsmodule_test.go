@@ -7,8 +7,8 @@ import (
 
 	"github.com/go-git/go-billy/v5/memfs"
 	"github.com/google/go-cmp/cmp"
-	"github.com/vknabel/blush/registry"
-	"github.com/vknabel/blush/registry/fsmodule"
+	"github.com/vknabel/zirric/registry"
+	"github.com/vknabel/zirric/registry/fsmodule"
 )
 
 type (
@@ -31,39 +31,39 @@ func TestDiscoderFSModules(t *testing.T) {
 	tests := []testCase{
 		{
 			name: "basic test",
-			cwd:  "/github.com/vknabel/blush-example",
-			base: "memory:///github.com/vknabel/blush-example",
+			cwd:  "/github.com/vknabel/zirric-example",
+			base: "memory:///github.com/vknabel/zirric-example",
 			files: map[string]string{
-				"/github.com/vknabel/blush-example/Cavefile":        "module cavefile",
-				"/github.com/vknabel/blush-example/tools/fmt.blush": "module tools",
-				"/github.com/vknabel/blush-example/cmd/main.blush":  "module cmd",
-				"/github.com/vknabel/blush-example/app/root.blush":  "module app",
+				"/github.com/vknabel/zirric-example/Cavefile":       "module cavefile",
+				"/github.com/vknabel/zirric-example/tools/fmt.zirr": "module tools",
+				"/github.com/vknabel/zirric-example/cmd/main.zirr":  "module cmd",
+				"/github.com/vknabel/zirric-example/app/root.zirr":  "module app",
 
-				"/github.com/vknabel/blush-example/app/views/body.blush": "module views",
+				"/github.com/vknabel/zirric-example/app/views/body.zirr": "module views",
 			},
 			want: []testWant{
 				{
-					uri: "memory:///github.com/vknabel/blush-example/app",
+					uri: "memory:///github.com/vknabel/zirric-example/app",
 					sources: map[registry.LogicalURI]string{
-						"memory:///github.com/vknabel/blush-example/app/root.blush": "module app",
+						"memory:///github.com/vknabel/zirric-example/app/root.zirr": "module app",
 					},
 				},
 				{
-					uri: "memory:///github.com/vknabel/blush-example/app/views",
+					uri: "memory:///github.com/vknabel/zirric-example/app/views",
 					sources: map[registry.LogicalURI]string{
-						"memory:///github.com/vknabel/blush-example/app/views/body.blush": "module views",
+						"memory:///github.com/vknabel/zirric-example/app/views/body.zirr": "module views",
 					},
 				},
 				{
-					uri: "memory:///github.com/vknabel/blush-example/cmd",
+					uri: "memory:///github.com/vknabel/zirric-example/cmd",
 					sources: map[registry.LogicalURI]string{
-						"memory:///github.com/vknabel/blush-example/cmd/main.blush": "module cmd",
+						"memory:///github.com/vknabel/zirric-example/cmd/main.zirr": "module cmd",
 					},
 				},
 				{
-					uri: "memory:///github.com/vknabel/blush-example/tools",
+					uri: "memory:///github.com/vknabel/zirric-example/tools",
 					sources: map[registry.LogicalURI]string{
-						"memory:///github.com/vknabel/blush-example/tools/fmt.blush": "module tools",
+						"memory:///github.com/vknabel/zirric-example/tools/fmt.zirr": "module tools",
 					},
 				},
 			},

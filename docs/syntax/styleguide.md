@@ -1,15 +1,15 @@
 # Styleguide
 
-To make Blush code more readable and consistent, we have a few rules and conventions that we follow.
+To make Zirric code more readable and consistent, we have a few rules and conventions that we follow.
 In general, abbreviations should be avoided and names should be as descriptive as possible.
 
 ## Modules
 
-In Blush we try to have many micro modules instead of a few large ones. Try to keep the size of modules small with only a few, small files. Consider hiding implementation details in a separate `internal` module.
+In Zirric we try to have many micro modules instead of a few large ones. Try to keep the size of modules small with only a few, small files. Consider hiding implementation details in a separate `internal` module.
 
 Module names are written in `snake_case`, but should avoid using underscores if possible. The module name should be short, expressive, easy to read and ideally in plural form. The module name should harmonize with the names of the declarations it contains.
 
-```blush
+```zirric
 // good
 module http
 module json
@@ -25,7 +25,7 @@ module reflection // reflection.typeOf
 
 If the filename or its members might exist in a different module, declare the `module` at the top of your file.
 
-```blush
+```zirric
 module my_module
 ```
 
@@ -36,7 +36,7 @@ Avoid prefixing the type name with the module name.
 
 ### Good
 
-```blush
+```zirric
 data Person
 data People
 data Printable // witness type
@@ -45,7 +45,7 @@ data Error // in module http
 
 ### Bad
 
-```blush
+```zirric
 data person
 data people
 data Printer // witness type
@@ -58,7 +58,7 @@ Function names are written in `camelCase`. The name should be a verb or a verb p
 
 ### Good
 
-```blush
+```zirric
 print
 printLine
 reflect.typeOf
@@ -66,7 +66,7 @@ reflect.typeOf
 
 ### Bad
 
-```blush
+```zirric
 print_line
 reflect.reflectType
 ```
@@ -77,7 +77,7 @@ Variable names are written in `camelCase`. The name should be a noun or a noun p
 
 When implementing specific patterns, the variable should reuse common names.
 
-```blush
+```zirric
 // good
 let name = "John"
 let person = Person("John", 42)
@@ -101,7 +101,7 @@ func printName(n) {
 
 Annotations are written in `PascalCase`. The name should describe a property of the declaration it annotates.
 
-```blush
+```zirric
 // good
 annotation Returns
 annotation HasKey
@@ -117,7 +117,7 @@ annotation Optional
 
 Enum names are written in `PascalCase`. The name should be a noun or a noun phrase. If the enum represents a collection, the name might be plural, otherwise it should be singular. If the enum represents witness types, it should describe the ability of the type, consider a `Witness` postfix.
 
-```blush
+```zirric
 // good
 enum Stateful
 enum JuristicPerson
@@ -131,7 +131,7 @@ enum Functor
 
 If the cases within the enum are more relevant than the enum, declare them outside. Otherwise inside.
 
-```blush
+```zirric
 // good
 enum Optional {
     data Some { value }

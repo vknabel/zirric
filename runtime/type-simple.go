@@ -1,7 +1,7 @@
 package runtime
 
 import (
-	"github.com/vknabel/blush/ast"
+	"github.com/vknabel/zirric/ast"
 )
 
 var _ RuntimeValue = SimpleType{}

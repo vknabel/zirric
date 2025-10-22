@@ -4,8 +4,8 @@ import (
 	"errors"
 	"strconv"
 
-	"github.com/vknabel/blush/ast"
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/ast"
+	"github.com/vknabel/zirric/token"
 )
 
 type (

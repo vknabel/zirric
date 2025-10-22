@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/vknabel/blush/cavefile"
-	"github.com/vknabel/blush/registry"
+	"github.com/vknabel/zirric/cavefile"
+	"github.com/vknabel/zirric/registry"
 )
 
 type InstallationTask struct {

@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 
 	"github.com/go-git/go-billy/v5"
-	"github.com/vknabel/blush/registry"
+	"github.com/vknabel/zirric/registry"
 )
 
 type FSSource struct {

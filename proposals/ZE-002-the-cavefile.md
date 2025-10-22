@@ -6,16 +6,16 @@
 
 ## Introduction
 
-This proposal describes the current Blush package manager and the `Cavefile` manifest that drives it. The goal is to document the partially implemented behaviour so users and contributors understand how dependencies are declared, resolved, and cached today.
+This proposal describes the current Zirric package manager and the `Cavefile` manifest that drives it. The goal is to document the partially implemented behaviour so users and contributors understand how dependencies are declared, resolved, and cached today.
 
 ## Motivation
 
-Blush projects will rely on external modules for language extensions and tooling.
+Zirric projects will rely on external modules for language extensions and tooling.
 Capturing the present-day and near future behaviour of the package manager clarifies how packages are discovered, how versions are selected, and how registries interact with the filesystem cache. Documenting the `Cavefile` structure likewise gives
 users a reference for authoring manifests that match the implementation.
 ## Proposed Solution
 
-Packages declare dependencies in a `Cavefile` module that Blush parses at build or install time. The manifest itself will not be executed. The package manager solely works on the type system.
+Packages declare dependencies in a `Cavefile` module that Zirric parses at build or install time. The manifest itself will not be executed. The package manager solely works on the type system.
 
 The package manager itself caches Git repositories on disk and coordinates one or more registries to provide the requested packages. Currently Git, local files and built-in registries are supported.
 
@@ -25,7 +25,7 @@ As of now the package manager does not traverse transitive dependencies, leaving
 
 The data structure with the `@cave.Dependencies()` annotation will be used to declare dependencies in a `Cavefile`.
 
-```blush
+```zirric
 import cave
 
 @cave.Dependencies()
@@ -39,7 +39,7 @@ data Dependencies {
   helpers // importable as helpers
 
   // References a package hosted in a Git repository.
-  @cave.Git("https://github.com/vknabel/blush")
+  @cave.Git("https://github.com/vknabel/zirric")
   @cave.Version(">0.1.0")
   future // importable as future
 }
@@ -50,12 +50,12 @@ resolution, but additional declarations such as tasks can live alongside them.
 
 ### Cavefile Tasks
 
-Additionally to dependencies, a `Cavefile` can declare tasks that the Blush CLI can execute.
+Additionally to dependencies, a `Cavefile` can declare tasks that the Zirric CLI can execute.
 
-```blush
+```zirric
 @tasks.Name("generate")
 @tasks.Help("Generates something")
-@tasks.Exec("tasks/generate.blush")
+@tasks.Exec("tasks/generate.zirr")
 data GenerateTask {
 	@Bool
 	@tasks.Flag()
@@ -69,8 +69,8 @@ data GenerateTask {
 }
 ```
 
-This will declare a task named `generate` that can be executed with `blush generate`.
-Upon execution, the `tasks/generate.blush` script will be run with the provided flags and arguments.
+This will declare a task named `generate` that can be executed with `zirric generate`.
+Upon execution, the `tasks/generate.zirr` script will be run with the provided flags and arguments.
 
 ## Detailed Design
 
@@ -117,7 +117,7 @@ Registries implement the `registry.Provider` interface. They surface:
   predicates.
 
 Packages resolved from either path expose module discovery helpers so the rest
-of the toolchain can load `.blush` sources. Modules advertise their logical URI
+of the toolchain can load `.zirr` sources. Modules advertise their logical URI
 and enumerate the files contained within the checkout.
 
 ### Git registry provider
@@ -132,7 +132,7 @@ packages to the installer.
 
 When a remote version is selected, the registry clones the tagged commit into a
 mangled `<source>/<version>/` directory. Module enumeration delegates to the
-filesystem module discovery helper so every `.blush` source within the repo is
+filesystem module discovery helper so every `.zirr` source within the repo is
 published to the toolchain.
 
 ### Task execution and parsing
@@ -160,15 +160,15 @@ Introduces the `cave` and `cave.tasks` modules to the standard library.
 ## Alternatives Considered
 
 - Using a different manifest format such as JSON or YAML was considered, but
-  Blush's strong typing and annotation system makes it straightforward to
-  declare dependencies and tasks directly in Blush code.
+  Zirric's strong typing and annotation system makes it straightforward to
+  declare dependencies and tasks directly in Zirric code.
 - Implementing transitive dependency resolution was considered, but deferred to a future enhancement to keep the initial implementation simpler and focused on
   direct dependencies only.
 - Supporting additional registry types (e.g., HTTP-based registries) was considered, but the initial implementation focuses on Git and local files to establish a solid foundation before expanding to other sources.
-- Using a different approach for task declaration, such as a dedicated task configuration file, was considered, but integrating tasks into the `Cavefile` keeps related configurations together and leverages Blush's type system.
-- A `package.blush` file was considered, but the `.blush` file extension would require additional tooling support and could lead to confusion with regular Blush source files.
+- Using a different approach for task declaration, such as a dedicated task configuration file, was considered, but integrating tasks into the `Cavefile` keeps related configurations together and leverages Zirric's type system.
+- A `package.zirr` file was considered, but the `.zirr` file extension would require additional tooling support and could lead to confusion with regular Zirric source files.
 
 ## Acknowledgements
 
-Thanks to the Blush maintainers for building the initial package manager and
+Thanks to the Zirric maintainers for building the initial package manager and
 Cavefile tooling that this document captures.

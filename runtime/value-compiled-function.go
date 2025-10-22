@@ -3,8 +3,8 @@ package runtime
 import (
 	"fmt"
 
-	"github.com/vknabel/blush/ast"
-	"github.com/vknabel/blush/op"
+	"github.com/vknabel/zirric/ast"
+	"github.com/vknabel/zirric/op"
 )
 
 var _ CallableRuntimeValue = CompiledFunction{}

@@ -7,7 +7,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/vknabel/blush/version"
+	"github.com/vknabel/zirric/version"
 )
 
 func TestSemverParsingSuccess(t *testing.T) {

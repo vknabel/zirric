@@ -1,8 +1,8 @@
 package ast
 
 import (
-	"github.com/vknabel/blush/registry"
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/registry"
+	"github.com/vknabel/zirric/token"
 )
 
 type ModuleName StaticReference

@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/vknabel/blush/ast"
-	"github.com/vknabel/blush/op"
-	"github.com/vknabel/blush/runtime"
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/ast"
+	"github.com/vknabel/zirric/op"
+	"github.com/vknabel/zirric/runtime"
+	"github.com/vknabel/zirric/token"
 )
 
 const (

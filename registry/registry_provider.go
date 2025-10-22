@@ -5,7 +5,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/vknabel/blush/version"
+	"github.com/vknabel/zirric/version"
 )
 
 // Provider is the registry for all packages in all versions.
@@ -13,11 +13,11 @@ import (
 //
 // The expected folder structure in increasing priority is:
 //
-//	 $BLUSH_STDLIB/
+//	 $ZIRRIC_STDLIB/
 //	 └── git/<package>/<version>/
 //		 ├── Cavefile
 //	 	 └── <submodule>/
-//	 $BLUSH_PACKAGES/
+//	 $ZIRRIC_PACKAGES/
 //	 └── git/<package>/<version>/
 //		 ├── Cavefile
 //	 	 └── <submodule>/

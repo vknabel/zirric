@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/go-git/go-git/v5/plumbing"
-	"github.com/vknabel/blush/registry"
-	"github.com/vknabel/blush/version"
+	"github.com/vknabel/zirric/registry"
+	"github.com/vknabel/zirric/version"
 )
 
 type remoteGitPackage struct {

@@ -3,10 +3,10 @@ package parser_test
 import (
 	"testing"
 
-	"github.com/vknabel/blush/ast"
-	"github.com/vknabel/blush/lexer"
-	"github.com/vknabel/blush/parser"
-	"github.com/vknabel/blush/registry/staticmodule"
+	"github.com/vknabel/zirric/ast"
+	"github.com/vknabel/zirric/lexer"
+	"github.com/vknabel/zirric/parser"
+	"github.com/vknabel/zirric/registry/staticmodule"
 )
 
 func TestParseExternDeclarations(t *testing.T) {
@@ -53,12 +53,12 @@ func TestParseExternDeclarations(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			parentTable := ast.MakeSymbolTable(nil, ast.Identifier{Value: "test"})
-			l, err := lexer.New(staticmodule.NewSourceString("testing:///test.blush", tc.input))
+			l, err := lexer.New(staticmodule.NewSourceString("testing:///test.zirr", tc.input))
 			if err != nil {
 				t.Fatalf("lexer error: %v", err)
 			}
 
-			p := parser.NewSourceParser(l, parentTable, "test.blush")
+			p := parser.NewSourceParser(l, parentTable, "test.zirr")
 			srcFile := p.ParseSourceFile()
 
 			// Check for parser errors
@@ -138,12 +138,12 @@ func TestParseExternDeclarationErrors(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			parentTable := ast.MakeSymbolTable(nil, ast.Identifier{Value: "test"})
-			l, err := lexer.New(staticmodule.NewSourceString("testing:///test.blush", tc.input))
+			l, err := lexer.New(staticmodule.NewSourceString("testing:///test.zirr", tc.input))
 			if err != nil {
 				t.Fatalf("lexer error: %v", err)
 			}
 
-			p := parser.NewSourceParser(l, parentTable, "test.blush")
+			p := parser.NewSourceParser(l, parentTable, "test.zirr")
 			p.ParseSourceFile()
 
 			// Should have parser errors

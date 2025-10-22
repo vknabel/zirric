@@ -11,7 +11,7 @@ import (
 
 	"github.com/go-git/go-billy/v5"
 	billyutil "github.com/go-git/go-billy/v5/util"
-	"github.com/vknabel/blush/registry"
+	"github.com/vknabel/zirric/registry"
 )
 
 type FSModule struct {
@@ -43,7 +43,7 @@ func DiscoverModules(base registry.LogicalURI, fs billy.Filesystem) ([]*FSModule
 	rootSrcs := make(map[registry.LogicalURI]*FSModule)
 
 	// TODO: replace glob with cusom logic
-	// matches, err := billyutil.Glob(fs, "**/*.blush")
+	// matches, err := billyutil.Glob(fs, "**/*.zirr")
 	matches, err := recursiveGlob(fs, 5)
 	if err != nil {
 		return nil, fmt.Errorf("failed to discover modules of %q, %w", base, err)
@@ -87,7 +87,7 @@ func recursiveGlob(fsys billy.Filesystem, maxDepth int) ([]string, error) {
 	var (
 		sources []string
 		folder  = regexp.MustCompile("^[a-zA-Z_][a-zA-Z0-9_-]+$")
-		ext     = ".blush"
+		ext     = ".zirr"
 	)
 
 	err := billyutil.Walk(fsys, ".", func(path string, info fs.FileInfo, err error) error {

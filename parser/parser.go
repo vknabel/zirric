@@ -3,9 +3,9 @@ package parser
 import (
 	"fmt"
 
-	"github.com/vknabel/blush/ast"
-	"github.com/vknabel/blush/lexer"
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/ast"
+	"github.com/vknabel/zirric/lexer"
+	"github.com/vknabel/zirric/token"
 )
 
 type Parser struct {

@@ -3,7 +3,7 @@ package ast
 import (
 	"strings"
 
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/token"
 )
 
 // Represents a static reference or a fully qualified Identifier.

@@ -1,7 +1,7 @@
 package ast
 
 import (
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/token"
 )
 
 type AnnotationChain []*DeclAnnotationInstance

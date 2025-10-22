@@ -6,7 +6,7 @@ import (
 
 	goruntime "runtime"
 
-	"github.com/vknabel/blush/runtime"
+	"github.com/vknabel/zirric/runtime"
 )
 
 type TaskId uint64

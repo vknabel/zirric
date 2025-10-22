@@ -1,6 +1,6 @@
 package ast
 
-import "github.com/vknabel/blush/token"
+import "github.com/vknabel/zirric/token"
 
 var _ Expr = ExprTypeSwitch{}
 

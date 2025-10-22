@@ -5,8 +5,8 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/vknabel/blush/ast"
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/ast"
+	"github.com/vknabel/zirric/token"
 )
 
 func makeIdentifier(name string) ast.Identifier {
