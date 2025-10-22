@@ -5,11 +5,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/vknabel/blush/ast"
-	"github.com/vknabel/blush/lexer"
-	"github.com/vknabel/blush/parser"
-	"github.com/vknabel/blush/registry/staticmodule"
-	"github.com/vknabel/blush/syncheck"
+	"github.com/vknabel/zirric/ast"
+	"github.com/vknabel/zirric/lexer"
+	"github.com/vknabel/zirric/parser"
+	"github.com/vknabel/zirric/registry/staticmodule"
+	"github.com/vknabel/zirric/syncheck"
 )
 
 func TestParseSourceFile(t *testing.T) {
@@ -148,11 +148,11 @@ func prepareSourceFileParsing(t *testing.T, input string) *ast.SourceFile {
 	parentTable := ast.MakeSymbolTable(nil, ast.Identifier{
 		Value: "test",
 	})
-	l, err := lexer.New(staticmodule.NewSourceString("testing:///test.blush", input))
+	l, err := lexer.New(staticmodule.NewSourceString("testing:///test.zirr", input))
 	if err != nil {
 		t.Fatal(err)
 	}
-	p := parser.NewSourceParser(l, parentTable, "test.blush")
+	p := parser.NewSourceParser(l, parentTable, "test.zirr")
 
 	srcFile := p.ParseSourceFile()
 	checkParserErrors(t, p, input)

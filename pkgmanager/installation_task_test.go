@@ -6,9 +6,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/vknabel/blush/cavefile"
-	"github.com/vknabel/blush/registry"
-	"github.com/vknabel/blush/version"
+	"github.com/vknabel/zirric/cavefile"
+	"github.com/vknabel/zirric/registry"
+	"github.com/vknabel/zirric/version"
 )
 
 // stubProvider implements registry.Provider with injectable behaviours.

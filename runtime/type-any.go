@@ -1,6 +1,6 @@
 package runtime
 
-import "github.com/vknabel/blush/ast"
+import "github.com/vknabel/zirric/ast"
 
 var _ RuntimeValue = &AnyType{}
 

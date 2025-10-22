@@ -3,7 +3,7 @@ package token_test
 import (
 	"testing"
 
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/token"
 )
 
 func TestLookupIdent(t *testing.T) {

@@ -1,6 +1,6 @@
 package cavefile
 
-import "github.com/vknabel/blush/version"
+import "github.com/vknabel/zirric/version"
 
 type Cavefile struct {
 	Dependencies []Dependency

@@ -1,9 +1,9 @@
 package vm
 
 import (
-	"github.com/vknabel/blush/compiler"
-	"github.com/vknabel/blush/op"
-	"github.com/vknabel/blush/runtime"
+	"github.com/vknabel/zirric/compiler"
+	"github.com/vknabel/zirric/op"
+	"github.com/vknabel/zirric/runtime"
 )
 
 const (

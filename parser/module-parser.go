@@ -1,9 +1,9 @@
 package parser
 
 import (
-	"github.com/vknabel/blush/ast"
-	"github.com/vknabel/blush/lexer"
-	"github.com/vknabel/blush/registry"
+	"github.com/vknabel/zirric/ast"
+	"github.com/vknabel/zirric/lexer"
+	"github.com/vknabel/zirric/registry"
 )
 
 type ModuleParser struct {

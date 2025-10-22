@@ -3,7 +3,7 @@ package version_test
 import (
 	"testing"
 
-	"github.com/vknabel/blush/version"
+	"github.com/vknabel/zirric/version"
 )
 
 func TestVerbalVersionParsingUntransformed(t *testing.T) {

@@ -3,7 +3,7 @@ package op_test
 import (
 	"testing"
 
-	. "github.com/vknabel/blush/op"
+	. "github.com/vknabel/zirric/op"
 )
 
 func TestMake(t *testing.T) {

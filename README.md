@@ -1,6 +1,6 @@
-# Blush
+# Zirric
 
-Blush is an experimental programming language with a reference implementation in Go. The project is in an early stage and offers the essential building blocks of a modern language:
+Zirric is an experimental programming language with a reference implementation in Go. The project is in an early stage and offers the essential building blocks of a modern language:
 
 - Lexer, parser, and AST
 - Bytecode compiler and virtual machine
@@ -14,7 +14,7 @@ A quick glimpse at core features:
 
 ### Variables, functions, and data types
 
-```blush
+```zirric
 let answer = 42
 let items = [1, 2, 3]
 
@@ -32,11 +32,12 @@ print(greet(alice.name))
 ```
 
 ### Control flow
-Blush provides both expression and statement variants of `if` and `for`.
+
+Zirric provides both expression and statement variants of `if` and `for`.
 The examples below use the expression forms, which yield values and can be
 nested inside other expressions.
 
-```blush
+```zirric
 let message = if answer == 42 { "yes" } else { "no" }
 
 for item <- items {
@@ -47,7 +48,7 @@ for item <- items {
 When only side effects are required, use the statement forms, which run for
 their effects and produce no value:
 
-```blush
+```zirric
 if answer == 42 {
     print("yes")
 } else {
@@ -65,7 +66,7 @@ encountered.
 
 ### Enums
 
-```blush
+```zirric
 enum Result {
     data Ok { value }
     data Err { message }
@@ -76,11 +77,11 @@ let r = Ok(42)
 
 ### Annotations
 
-Blush has no interfaces; instead, annotations attach behaviour and metadata to
+Zirric has no interfaces; instead, annotations attach behaviour and metadata to
 types and functions. They enable generic code to rely on declared capabilities
 without a formal interface system:
 
-```blush
+```zirric
 annotation Countable { length(value) }
 
 @Countable({ v -> v.length })

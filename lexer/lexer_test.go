@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/vknabel/blush/lexer"
-	"github.com/vknabel/blush/registry/staticmodule"
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/lexer"
+	"github.com/vknabel/zirric/registry/staticmodule"
+	"github.com/vknabel/zirric/token"
 )
 
 func TestLexer(t *testing.T) {
 	input := `
-#!/usr/bin/env blush
+#!/usr/bin/env zirric
 module example
 
 import tests {
@@ -32,7 +32,7 @@ test "any in enums matches all types", { fail ->
 	unless isCorrect, fail "should not be the case"
 }
 `
-	l, err := lexer.New(staticmodule.NewSourceString("testing:///test/test.blush", input))
+	l, err := lexer.New(staticmodule.NewSourceString("testing:///test/test.zirr", input))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -41,7 +41,7 @@ test "any in enums matches all types", { fail ->
 		expectedType    token.TokenType
 		expectedLiteral string
 	}{
-		// {token.COMMENT, "!/usr/bin/env blush"},
+		// {token.COMMENT, "!/usr/bin/env zirric"},
 		{token.MODULE, "module"},
 		{token.IDENT, "example"},
 		{token.IMPORT, "import"},
@@ -939,7 +939,7 @@ func TestAllTokens(t *testing.T) {
 	}
 
 	for _, tt := range testCases {
-		l, err := lexer.New(staticmodule.NewSourceString("testing:///test/test.blush", tt.input))
+		l, err := lexer.New(staticmodule.NewSourceString("testing:///test/test.zirr", tt.input))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -1014,10 +1014,10 @@ func TestDecorativeLexer(t *testing.T) {
 		},
 		{
 			"empty shebang",
-			"#!/usr/bin/env blush",
+			"#!/usr/bin/env zirric",
 			[]tok{
 				{token.EOF, "", []deco{
-					{token.DECO_COMMENT, "!/usr/bin/env blush"},
+					{token.DECO_COMMENT, "!/usr/bin/env zirric"},
 				}},
 			},
 		},
@@ -1086,7 +1086,7 @@ func TestDecorativeLexer(t *testing.T) {
 
 	for _, tt := range testCases {
 		t.Run(tt.name, func(t *testing.T) {
-			l, err := lexer.New(staticmodule.NewSourceString("testing:///decorative/test.blush", tt.input))
+			l, err := lexer.New(staticmodule.NewSourceString("testing:///decorative/test.zirr", tt.input))
 			if err != nil {
 				t.Fatal(err)
 			}

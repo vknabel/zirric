@@ -3,7 +3,7 @@ package runtime
 import (
 	"fmt"
 
-	"github.com/vknabel/blush/ast"
+	"github.com/vknabel/zirric/ast"
 )
 
 var _ RuntimeValue = &EnumType{}

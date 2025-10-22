@@ -3,7 +3,7 @@ package ast
 import (
 	"strconv"
 
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/token"
 )
 
 var _ Expr = ExprChar{}

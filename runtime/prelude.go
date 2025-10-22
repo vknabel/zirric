@@ -1,7 +1,7 @@
 package runtime
 
 import (
-	"github.com/vknabel/blush/ast"
+	"github.com/vknabel/zirric/ast"
 )
 
 // Declares some TypeId constants for the prelude data types.

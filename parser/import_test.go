@@ -3,7 +3,7 @@ package parser_test
 import (
 	"testing"
 
-	"github.com/vknabel/blush/ast"
+	"github.com/vknabel/zirric/ast"
 )
 
 func TestImportDecl(t *testing.T) {

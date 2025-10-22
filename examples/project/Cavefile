@@ -5,7 +5,7 @@ import cave.tasks
 data Dependencies {
   // Standard library packages are available by default
   @cave.Stdlib("tests")
-  @tasks.Import("test") // this imports the `test` task from the tests package so it can be run with `blush test`
+  @tasks.Import("test") // this imports the `test` task from the tests package so it can be run with `zirric test`
   tests // this will be the name of the import
 
   @cave.Stdlib("prelude") // this is optional, as prelude is always included
@@ -14,16 +14,16 @@ data Dependencies {
   @cave.Local("../some-local-package")
   helpers // importable as helpers
 
-  @cave.Git("https://github.com/vknabel/blush")
+  @cave.Git("https://github.com/vknabel/zirric")
   @cave.Version(">0.1.0")
   future // importable as future
 }
 
 // Define a task named "generate" with a help description and specify the script to run.
-// Can be executed with `blush generate [arg] [--dry]`
+// Can be executed with `zirric generate [arg] [--dry]`
 @tasks.Name("generate")
 @tasks.Help("Generates something")
-@tasks.Exec("tasks/generate.blush")
+@tasks.Exec("tasks/generate.zirr")
 data GenerateTask {
 	@Bool
 	@tasks.Flag()

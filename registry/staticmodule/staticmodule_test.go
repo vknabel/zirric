@@ -3,7 +3,7 @@ package staticmodule
 import (
 	"testing"
 
-	"github.com/vknabel/blush/registry"
+	"github.com/vknabel/zirric/registry"
 )
 
 func TestStaticModuleSources(t *testing.T) {

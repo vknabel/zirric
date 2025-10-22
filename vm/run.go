@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/vknabel/blush/op"
-	"github.com/vknabel/blush/runtime"
+	"github.com/vknabel/zirric/op"
+	"github.com/vknabel/zirric/runtime"
 )
 
 func (vm *VM) Run() error {

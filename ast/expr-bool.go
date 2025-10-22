@@ -3,7 +3,7 @@ package ast
 import (
 	"fmt"
 
-	"github.com/vknabel/blush/token"
+	"github.com/vknabel/zirric/token"
 )
 
 var _ Expr = ExprBool{}

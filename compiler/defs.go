@@ -1,9 +1,9 @@
 package compiler
 
 import (
-	"github.com/vknabel/blush/ast"
-	"github.com/vknabel/blush/op"
-	"github.com/vknabel/blush/runtime"
+	"github.com/vknabel/zirric/ast"
+	"github.com/vknabel/zirric/op"
+	"github.com/vknabel/zirric/runtime"
 )
 
 type emittedInstruction struct {

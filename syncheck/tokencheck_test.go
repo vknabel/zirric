@@ -3,7 +3,7 @@ package syncheck_test
 import (
 	"testing"
 
-	"github.com/vknabel/blush/syncheck"
+	"github.com/vknabel/zirric/syncheck"
 )
 
 func TestParsingAssertions(t *testing.T) {

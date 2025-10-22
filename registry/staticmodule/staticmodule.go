@@ -1,6 +1,6 @@
 package staticmodule
 
-import "github.com/vknabel/blush/registry"
+import "github.com/vknabel/zirric/registry"
 
 type (
 	StaticModule struct {

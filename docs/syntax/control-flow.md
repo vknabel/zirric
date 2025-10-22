@@ -1,6 +1,6 @@
 # Control flow
 
-Blush offers both expression and statement forms for its `if` and `for` constructs.
+Zirric offers both expression and statement forms for its `if` and `for` constructs.
 Expressions produce a value, while statements are used when only side effects are
 required.
 
@@ -9,7 +9,7 @@ required.
 The expression form evaluates to one of its branches and can be embedded in
 larger expressions:
 
-```blush
+```zirric
 let label = if answer == 42 { "yes" } else { "no" }
 ```
 
@@ -18,7 +18,7 @@ include `return` statements.
 
 The statement form chooses a branch for its effects and produces no value:
 
-```blush
+```zirric
 if answer == 42 {
     print("yes")
 } else {
@@ -34,7 +34,7 @@ if answer == 42 {
 The `for` expression iterates over a sequence and gathers the values produced by
 its body:
 
-```blush
+```zirric
 let doubled = for n <- [1, 2, 3] { n * 2 }
 ```
 
@@ -45,7 +45,7 @@ of exactly one expression; `return` statements are not allowed.
 
 The statement form simply walks a collection for its effects:
 
-```blush
+```zirric
 for n <- [1, 2, 3] {
     print(n)
 }

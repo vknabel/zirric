@@ -1,8 +1,8 @@
-# Copilot Instructions for Blush
+# Copilot Instructions for Zirric
 
 ## Project Overview
 
-Blush is an experimental programming language implemented in Go with a bytecode compiler and virtual machine. The repository contains:
+Zirric is an experimental programming language implemented in Go with a bytecode compiler and virtual machine. The repository contains:
 
 - **Language Type**: Programming language implementation (lexer, parser, compiler, VM)
 - **Primary Language**: Go 1.23+ 
@@ -11,7 +11,7 @@ Blush is an experimental programming language implemented in Go with a bytecode 
 
 ### Core Components
 
-- **Lexer & Parser**: Tokenize and parse Blush source code into AST
+- **Lexer & Parser**: Tokenize and parse Zirric source code into AST
 - **Compiler**: Compile AST to bytecode for virtual machine
 - **Virtual Machine**: Execute bytecode with stack-based architecture  
 - **Runtime**: Built-in types (Array, Bool, Int, String) and standard library
@@ -26,7 +26,7 @@ Blush is an experimental programming language implemented in Go with a bytecode 
 
 ### Essential Commands
 
-**ALWAYS run these commands from the repository root `/home/runner/work/blush/blush`:**
+**ALWAYS run these commands from the repository root `/home/runner/work/zirric/zirric`:**
 
 #### Build (Required before testing)
 ```bash
@@ -124,8 +124,8 @@ GitHub Actions workflow (`.github/workflows/go.yml`):
 ├── docs/                       # Language documentation
 │   ├── compiler-and-vm.md      # Bytecode & VM architecture
 │   └── syntax/                 # Language syntax docs
-├── examples/project/           # Example Blush project
-├── stdlib/prelude/             # Standard library (.blush files)
+├── examples/project/           # Example Zirric project
+├── stdlib/prelude/             # Standard library (.zirr files)
 ├── ast/                        # Abstract Syntax Tree definitions
 ├── lexer/                      # Tokenization
 ├── parser/                     # Parse tokens to AST  
